@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NautiMax | Gestión, Guardería y Servicios Náuticos</title>
+  <meta name="description" content="NautiMax centraliza la gestión de tu embarcación: guardería para lanchas, mantenimiento, administración, proveedores y salida programada.">
+  <style>
+    :root{
+      --navy:#071e34;
+      --navy2:#0b2d4d;
+      --blue:#0f628f;
+      --sky:#eaf4fa;
+      --bg:#f7f9fb;
+      --white:#fff;
+      --text:#153149;
+      --muted:#6d7e8b;
+      --border:#dce6ed;
+      --radius:22px;
+      --shadow:0 18px 55px rgba(5,29,51,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.55;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1180px,calc(100% - 36px));margin:auto}
+
+    header{
+      position:sticky;top:0;z-index:100;
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(7,30,52,.08);
+    }
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .logo{display:flex;align-items:center}
+    .logo img{width:175px;max-height:52px;object-fit:contain;object-position:left center}
+    .links{display:flex;gap:27px;align-items:center;font-size:.94rem;font-weight:650}
+    .links a:hover{color:var(--blue)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:48px;padding:0 22px;border-radius:999px;
+      font-weight:750;border:1px solid var(--navy);
+      background:var(--navy);color:white;transition:.2s ease;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(7,30,52,.18)}
+    .btn.light{background:white;color:var(--navy);border-color:white}
+    .btn.outline{background:transparent;color:var(--navy)}
+    .hero{
+      min-height:700px;
+      display:flex;align-items:center;
+      background:
+        radial-gradient(circle at 75% 20%,rgba(41,122,169,.18),transparent 32%),
+        linear-gradient(135deg,#06192c 0%,#0a3153 62%,#0f557e 100%);
+      color:white;overflow:hidden;position:relative;
+    }
+    .hero:after{
+      content:"";position:absolute;width:520px;height:520px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.08);right:-110px;bottom:-220px;
+      box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.018);
+    }
+    .hero-inner{position:relative;z-index:2;padding:110px 0}
+    .eyebrow{
+      display:inline-block;text-transform:uppercase;letter-spacing:.16em;
+      font-size:.78rem;font-weight:800;margin-bottom:17px;
+    }
+    h1{
+      margin:0;max-width:900px;font-size:clamp(3.2rem,7vw,6.8rem);
+      line-height:.92;letter-spacing:-.065em;
+    }
+    .hero p{
+      margin:28px 0 34px;max-width:720px;font-size:1.22rem;
+      color:rgba(255,255,255,.78);
+    }
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero .btn.outline{color:white;border-color:rgba(255,255,255,.38);background:rgba(255,255,255,.05)}
+
+    .trust{position:relative;z-index:5;margin-top:-45px}
+    .trust-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      background:white;border:1px solid var(--border);border-radius:var(--radius);
+      box-shadow:var(--shadow);overflow:hidden;
+    }
+    .trust-item{padding:30px;border-right:1px solid var(--border)}
+    .trust-item:last-child{border-right:none}
+    .trust-item strong{display:block;font-size:1.75rem;color:var(--navy);letter-spacing:-.04em;margin-bottom:5px}
+    .trust-item span{font-size:.91rem;color:var(--muted)}
+
+    section{padding:96px 0}
+    .section-head{max-width:790px;margin-bottom:45px}
+    .section-head h2{
+      color:var(--navy);font-size:clamp(2.3rem,4vw,4.2rem);
+      line-height:1;letter-spacing:-.055em;margin:8px 0 15px;
+    }
+    .section-head p{margin:0;color:var(--muted);font-size:1.08rem}
+    .blue-eyebrow{color:var(--blue)}
+
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      border:1px solid var(--border);border-radius:20px;padding:30px;
+      background:white;min-height:235px;transition:.2s ease;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .card .icon{font-size:2rem;margin-bottom:30px}
+    .card h3{font-size:1.22rem;margin:0 0 9px;color:var(--navy)}
+    .card p{margin:0;color:var(--muted)}
+
+    .guarderia{background:var(--bg)}
+    .guarderia-grid{
+      display:grid;grid-template-columns:.9fr 1.1fr;gap:62px;align-items:center;
+    }
+    .visual{
+      min-height:560px;border-radius:28px;overflow:hidden;position:relative;
+      background:
+        linear-gradient(to top,rgba(6,25,44,.82),rgba(6,25,44,.05)),
+        url('assets/guarderia-lanchas.jpg') center/cover no-repeat,
+        linear-gradient(135deg,#0b3b5b,#74a9c2);
+      box-shadow:var(--shadow);
+    }
+    .visual-info{
+      position:absolute;left:28px;right:28px;bottom:28px;color:#fff;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+    }
+    .visual-stat{
+      padding:15px;border-radius:15px;background:rgba(5,26,45,.58);
+      backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);
+    }
+    .visual-stat strong{display:block;font-size:1.45rem}
+    .visual-stat span{font-size:.77rem;color:rgba(255,255,255,.72)}
+    .bullet-list{display:grid;gap:15px;margin:28px 0 31px}
+    .bullet{display:flex;gap:13px;align-items:flex-start}
+    .check{
+      width:31px;height:31px;flex:0 0 31px;border-radius:50%;
+      display:grid;place-items:center;background:var(--sky);color:var(--blue);font-weight:900;
+    }
+    .bullet strong{color:var(--navy)}
+    .bullet span{color:var(--muted)}
+
+    .storage-features{margin-top:60px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .storage-feature{
+      background:white;border:1px solid var(--border);border-radius:17px;padding:22px;
+    }
+    .storage-feature b{display:block;color:var(--navy);margin:10px 0 5px}
+    .storage-feature span{color:var(--muted);font-size:.9rem}
+
+    .process{background:var(--navy);color:white}
+    .process .section-head h2{color:white}
+    .process .section-head p{color:rgba(255,255,255,.68)}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+    .step{padding-top:22px;border-top:1px solid rgba(255,255,255,.23)}
+    .step small{font-weight:800;letter-spacing:.13em;color:rgba(255,255,255,.48)}
+    .step h3{font-size:1.55rem;margin:15px 0 9px}
+    .step p{margin:0;color:rgba(255,255,255,.68)}
+
+    .management-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:20px;
+    }
+    .wide-card{
+      padding:30px;border:1px solid var(--border);border-radius:20px;background:#fff;
+      display:flex;gap:20px;
+    }
+    .wide-card .icon{font-size:1.7rem}
+    .wide-card h3{margin:0 0 6px;color:var(--navy)}
+    .wide-card p{margin:0;color:var(--muted)}
+
+    .amenities{background:var(--bg)}
+    .amenity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .amenity{
+      background:white;border:1px solid var(--border);border-radius:16px;padding:21px;
+      font-weight:720;color:var(--navy);
+    }
+
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:start}
+    .quote-panel{
+      padding:43px;border-radius:25px;background:var(--sky);
+      border:1px solid #d6e9f3;
+    }
+    .quote-panel h3{margin:0 0 13px;color:var(--navy);font-size:1.8rem;letter-spacing:-.035em}
+    .quote-panel p{color:var(--muted);margin:0}
+
+    .contact{background:var(--bg)}
+    .contact-box{
+      display:grid;grid-template-columns:1fr .9fr;gap:55px;
+      background:linear-gradient(135deg,#061a2d,#0a3e63);
+      color:white;padding:58px;border-radius:28px;
+    }
+    .contact-box h2{margin:8px 0 18px;font-size:clamp(2.5rem,4vw,4.5rem);line-height:.98;letter-spacing:-.055em}
+    .contact-box p{color:rgba(255,255,255,.7)}
+    form{display:grid;gap:12px}
+    input,select,textarea{
+      width:100%;padding:15px 16px;border-radius:13px;
+      border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);
+      color:white;font:inherit;outline:none;
+    }
+    input::placeholder,textarea::placeholder{color:rgba(255,255,255,.48)}
+    select option{color:#111}
+    textarea{min-height:105px;resize:vertical}
+    form button{cursor:pointer;background:white!important;color:var(--navy)!important;border-color:white!important}
+
+    footer{background:#041424;color:rgba(255,255,255,.62);padding:42px 0}
+    .footer{display:grid;grid-template-columns:1.4fr .6fr .6fr;gap:35px}
+    .footer img{width:150px;filter:brightness(0) invert(1);margin-bottom:15px}
+    .footer h4{margin:0 0 12px;color:white}
+    .footer a,.footer span{display:block;margin:7px 0;font-size:.9rem}
+
+    @media(max-width:950px){
+      .links{display:none}
+      .trust-grid,.cards,.storage-features,.amenity-grid{grid-template-columns:1fr 1fr}
+      .guarderia-grid,.why-grid,.contact-box{grid-template-columns:1fr}
+      .management-grid{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .footer{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:600px){
+      .container{width:min(100% - 26px,1180px)}
+      section{padding:72px 0}
+      .hero{min-height:650px}
+      .hero-inner{padding:85px 0}
+      .trust-grid,.cards,.storage-features,.amenity-grid{grid-template-columns:1fr}
+      .trust-item{border-right:none;border-bottom:1px solid var(--border)}
+      .trust-item:last-child{border-bottom:none}
+      .visual{min-height:470px}
+      .visual-info{grid-template-columns:1fr}
+      .contact-box{padding:34px 23px}
+      .footer{grid-template-columns:1fr}
+      .logo img{width:145px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">
+      <img src="assets/logo.png" alt="Logo NautiMax">
+    </a>
+
+    <nav class="links">
+      <a href="#servicios">Servicios</a>
+      <a href="#guarderia">Guardería</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#nautimax">NautiMax</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a class="btn" href="#contacto">Consultar →</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-inner">
+      <span class="eyebrow">Gestión náutica simplificada</span>
+      <h1>Disfrutá tu barco.<br>Nosotros nos ocupamos.</h1>
+      <p>
+        NautiMax centraliza la gestión, guardería, coordinación y seguimiento de tu embarcación
+        para que tengas más tiempo para disfrutarla y menos cosas de las que ocuparte.
+      </p>
+      <div class="actions">
+        <a href="#contacto" class="btn light">Consultar →</a>
+        <a href="#servicios" class="btn outline">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container trust">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <strong>Guardería</strong>
+        <span>Un lugar seguro para tu lancha.</span>
+      </div>
+      <div class="trust-item">
+        <strong>Gestión</strong>
+        <span>Todo centralizado en un solo punto.</span>
+      </div>
+      <div class="trust-item">
+        <strong>Coordinación</strong>
+        <span>Proveedores y tareas organizadas.</span>
+      </div>
+      <div class="trust-item">
+        <strong>Seguimiento</strong>
+        <span>Más claridad sobre tu embarcación.</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow blue-eyebrow">Servicios</span>
+        <h2>Todo lo que tu embarcación necesita, más simple.</h2>
+        <p>
+          Centralizamos las tareas que requieren coordinación, seguimiento y organización
+          para que vos tengas menos preocupaciones.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icon">🚤</div>
+          <h3>Guardería de lanchas</h3>
+          <p>Guarda, movimientos y salida programada para que tu embarcación esté protegida y lista cuando la necesites.</p>
+        </article>
+        <article class="card">
+          <div class="icon">⚓</div>
+          <h3>Gestión integral</h3>
+          <p>Organización y seguimiento general de las necesidades de tu embarcación.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🔧</div>
+          <h3>Mantenimiento</h3>
+          <p>Coordinación y seguimiento de tareas de mantenimiento, limpieza y service.</p>
+        </article>
+        <article class="card">
+          <div class="icon">📋</div>
+          <h3>Administración</h3>
+          <p>Información, gastos, documentación y servicios organizados de una manera más clara.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🤝</div>
+          <h3>Coordinación de proveedores</h3>
+          <p>Menos tiempo buscando, llamando y haciendo seguimiento de trabajos y servicios.</p>
+        </article>
+        <article class="card">
+          <div class="icon">📱</div>
+          <h3>Comunicación directa</h3>
+          <p>Un canal simple para consultar, coordinar y seguir las tareas de tu embarcación.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="guarderia" id="guarderia">
+    <div class="container">
+      <div class="guarderia-grid">
+        <div class="visual">
+          <div class="visual-info">
+            <div class="visual-stat"><strong>24'</strong><span>Hasta 24 pies*</span></div>
+            <div class="visual-stat"><strong>5 Tn</strong><span>Capacidad de operación*</span></div>
+            <div class="visual-stat"><strong>24/7</strong><span>Seguridad y monitoreo*</span></div>
+          </div>
+        </div>
+
+        <div>
+          <span class="eyebrow blue-eyebrow">Guardería NautiMax</span>
+          <div class="section-head" style="margin-bottom:0">
+            <h2>Tu lancha segura. Tu salida más fácil.</h2>
+            <p>
+              La guardería no debería ser solamente un lugar donde dejar una embarcación.
+              Queremos que forme parte de una experiencia más simple: guardar, coordinar,
+              preparar y salir a navegar.
+            </p>
+          </div>
+
+          <div class="bullet-list">
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div><strong>Guarda para lanchas</strong><br><span>Camas náuticas organizadas según eslora, peso y características de la embarcación.</span></div>
+            </div>
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div><strong>Salida programada</strong><br><span>Coordinás tu salida antes de llegar para reducir esperas y aprovechar mejor tu día.</span></div>
+            </div>
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div><strong>Operación y asistencia</strong><br><span>Movimiento, botadura, amarre y apoyo del personal durante la operación.</span></div>
+            </div>
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div><strong>Seguridad y seguimiento</strong><br><span>Control, vigilancia y una comunicación más clara sobre tu embarcación.</span></div>
+            </div>
+          </div>
+
+          <a class="btn" href="#contacto">Consultar cama náutica →</a>
+        </div>
+      </div>
+
+      <div class="storage-features">
+        <div class="storage-feature">
+          <div>🏗️</div><b>Puente grúa</b>
+          <span>Movimiento seguro y eficiente de las embarcaciones.</span>
+        </div>
+        <div class="storage-feature">
+          <div>⬆️</div><b>Ascensores de costa</b>
+          <span>Apoyo para botadura y retiro desde el agua.</span>
+        </div>
+        <div class="storage-feature">
+          <div>🛟</div><b>Marinas de abordaje</b>
+          <span>Espacio cómodo para subir, bajar y preparar la salida.</span>
+        </div>
+        <div class="storage-feature">
+          <div>🔒</div><b>Seguridad y CCTV</b>
+          <span>Protección, vigilancia y monitoreo de las instalaciones.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="como-funciona">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Experiencia NautiMax</span>
+        <h2>De la guardería al agua, sin complicaciones.</h2>
+        <p>La idea es reducir al mínimo las tareas que tenés que resolver antes y después de navegar.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <small>01 · RESERVÁ</small>
+          <h3>Encontramos el lugar adecuado</h3>
+          <p>Nos pasás modelo, eslora, peso y necesidades de tu lancha para confirmar disponibilidad.</p>
+        </div>
+        <div class="step">
+          <small>02 · PROGRAMÁ</small>
+          <h3>Nos avisás cuándo salís</h3>
+          <p>Coordinamos la preparación y el movimiento para que la embarcación esté lista.</p>
+        </div>
+        <div class="step">
+          <small>03 · NAVEGÁ</small>
+          <h3>Llegás y disfrutás</h3>
+          <p>Menos logística en tierra y más tiempo aprovechando tu embarcación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gestion">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow blue-eyebrow">Después de guardar la lancha</span>
+        <h2>NautiMax también se ocupa de lo que pasa alrededor.</h2>
+        <p>
+          La diferencia es integrar la guardería con la gestión cotidiana de la embarcación:
+          trabajos, mantenimiento, gastos, proveedores y seguimiento.
+        </p>
+      </div>
+
+      <div class="management-grid">
+        <div class="wide-card">
+          <div class="icon">🔧</div>
+          <div><h3>Mecánica y service</h3><p>Coordinación con talleres y especialistas, seguimiento de trabajos y estado de tareas.</p></div>
+        </div>
+        <div class="wide-card">
+          <div class="icon">🧽</div>
+          <div><h3>Limpieza y puesta a punto</h3><p>Organización de limpieza, preparación y mantenimiento general de la lancha.</p></div>
+        </div>
+        <div class="wide-card">
+          <div class="icon">🧾</div>
+          <div><h3>Gastos y documentación</h3><p>Una forma más ordenada de centralizar información relevante de la embarcación.</p></div>
+        </div>
+        <div class="wide-card">
+          <div class="icon">🛡️</div>
+          <div><h3>Seguros y servicios</h3><p>Coordinación de seguros, insumos y otros servicios náuticos cuando sean necesarios.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="amenities">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow blue-eyebrow">Comodidades</span>
+        <h2>Una experiencia más completa en tierra.</h2>
+        <p>Servicios que pueden acompañar la operación de guardería y mejorar cada visita.</p>
+      </div>
+
+      <div class="amenity-grid">
+        <div class="amenity">🚗 Estacionamiento vigilado</div>
+        <div class="amenity">☕ Cafetería / Drugstore</div>
+        <div class="amenity">📶 Wi-Fi</div>
+        <div class="amenity">⚡ Respaldo eléctrico</div>
+        <div class="amenity">🔧 Mecánica especializada</div>
+        <div class="amenity">🧼 Limpieza de lanchas</div>
+        <div class="amenity">🛡️ Seguros náuticos</div>
+        <div class="amenity">🌤️ Deck / Solarium</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nautimax">
+    <div class="container why-grid">
+      <div>
+        <span class="eyebrow blue-eyebrow">NautiMax</span>
+        <div class="section-head" style="margin-bottom:0">
+          <h2>La náutica debería sentirse simple.</h2>
+          <p>
+            Tener una embarcación es para disfrutarla. Pero detrás de cada salida existe
+            mantenimiento, coordinación, administración y logística.
+          </p>
+        </div>
+      </div>
+
+      <div class="quote-panel">
+        <h3>Un único punto de contacto.</h3>
+        <p>
+          NautiMax nace para reducir esa complejidad. En vez de tener la guardería por un lado,
+          el mecánico por otro, los gastos por otro y las tareas dispersas, buscamos centralizar
+          la experiencia alrededor de tu embarcación.
+        </p>
+        <div class="bullet-list" style="margin-bottom:0">
+          <div class="bullet"><div class="check">✓</div><div><strong>Mayor organización y seguimiento.</strong></div></div>
+          <div class="bullet"><div class="check">✓</div><div><strong>Menos tiempo dedicado a coordinar.</strong></div></div>
+          <div class="bullet"><div class="check">✓</div><div><strong>Más tiempo para navegar.</strong></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <span class="eyebrow">Contacto</span>
+          <h2>Contanos qué lancha tenés.</h2>
+          <p>
+            Completá tus datos, características de la embarcación y qué necesitás.
+            El formulario puede conectarse directamente a WhatsApp para continuar la conversación.
+          </p>
+          <p>
+            <strong>Email</strong><br>
+            contacto@nautimax.com
+          </p>
+        </div>
+
+        <form id="contactForm">
+          <input id="nombre" type="text" placeholder="Nombre" required>
+          <input id="telefono" type="tel" placeholder="Teléfono / WhatsApp">
+          <input id="embarcacion" type="text" placeholder="Marca / modelo de la lancha">
+          <select id="eslora">
+            <option value="">Eslora aproximada</option>
+            <option>Hasta 18 pies</option>
+            <option>19 a 21 pies</option>
+            <option>22 a 24 pies</option>
+            <option>Más de 24 pies</option>
+          </select>
+          <select id="interes">
+            <option value="">¿Qué necesitás?</option>
+            <option>Guardería / cama náutica</option>
+            <option>Salida programada</option>
+            <option>Mantenimiento</option>
+            <option>Gestión integral</option>
+            <option>Otra consulta</option>
+          </select>
+          <textarea id="consulta" placeholder="Contanos un poco más"></textarea>
+          <button class="btn" type="submit">Continuar por WhatsApp →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer">
+    <div>
+      <img src="assets/logo.png" alt="NautiMax">
+      <span>Gestión, guardería y soluciones náuticas para simplificar el cuidado de tu embarcación.</span>
+    </div>
+    <div>
+      <h4>Navegación</h4>
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#guarderia">Guardería</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a href="mailto:contacto@nautimax.com">Email</a>
+      <span>© 2026 NautiMax</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /*
+    IMPORTANTE:
+    Reemplazar WHATSAPP_NUMBER por el número real con código de país, sin + ni espacios.
+    Ejemplo Argentina: 54911XXXXXXXX
+  */
+  const WHATSAPP_NUMBER = "";
+
+  document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value || "-";
+    const telefono = document.getElementById("telefono").value || "-";
+    const embarcacion = document.getElementById("embarcacion").value || "-";
+    const eslora = document.getElementById("eslora").value || "-";
+    const interes = document.getElementById("interes").value || "-";
+    const consulta = document.getElementById("consulta").value || "-";
+
+    const mensaje =
+`Hola NautiMax,
+Mi nombre es ${nombre}.
+
+Embarcación: ${embarcacion}
+Eslora: ${eslora}
+Teléfono: ${telefono}
+Consulta: ${interes}
+
+${consulta}`;
+
+    const base = WHATSAPP_NUMBER
+      ? `https://wa.me/${WHATSAPP_NUMBER}`
+      : "https://wa.me/";
+
+    window.open(`${base}?text=${encodeURIComponent(mensaje)}`, "_blank");
+  });
+</script>
+
+</body>
+</html>
