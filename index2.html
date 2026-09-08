@@ -264,6 +264,8 @@ ul{margin:0;padding:0;list-style:none}
    CONTACTO
    ============================================================ */
 .contact{background:var(--ink);color:var(--paper);padding-block:var(--pad-y)}
+.contact-brand{margin-bottom:28px}
+.contact-brand img{width:180px;max-height:58px;object-fit:contain;object-position:left center;filter:brightness(0) invert(1)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(36px,5vw,80px)}
 .contact h2{color:var(--paper)}
 .contact .lede{color:var(--muted-dark)}
@@ -343,43 +345,6 @@ ul{margin:0;padding:0;list-style:none}
   }
   .mobile-cta .btn{width:100%;justify-content:center}
 }
-
-/* Logo de NautiMax sobre llamados a WhatsApp */
-.wa-block{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:10px;
-}
-.wa-block .wa-logo{
-  width:132px;
-  max-height:44px;
-  object-fit:contain;
-  object-position:left center;
-}
-.on-dark .wa-block .wa-logo{
-  filter:brightness(0) invert(1);
-}
-.form .wa-block{
-  width:100%;
-}
-.form .wa-block .btn{
-  width:100%;
-}
-.mobile-cta .wa-block{
-  width:100%;
-  align-items:center;
-}
-.mobile-cta .wa-block .wa-logo{
-  width:96px;
-  max-height:30px;
-  filter:none;
-}
-.mobile-cta .wa-block .btn{
-  width:100%;
-  justify-content:center;
-}
-
 </style>
 </head>
 <body>
@@ -468,10 +433,7 @@ ul{margin:0;padding:0;list-style:none}
       <h1>Guardá tu lancha.<br>Salí a navegar tranquilo.</h1>
       <p>Dejás tu lancha con nosotros, avisás cuándo querés salir y te la tenemos lista para operar. Simple, segura y sin vueltas.</p>
       <div class="hero-actions">
-        <div class="wa-block">
-          <img class="wa-logo" src="assets/logo.png" alt="NautiMax">
-          <a class="btn btn--go" href="#contacto"><svg class="ico" aria-hidden="true"><use href="#ic-wa"/></svg>Escribinos por WhatsApp</a>
-        </div>
+        <a class="btn btn--go" href="#contacto"><svg class="ico" aria-hidden="true"><use href="#ic-wa"/></svg>Escribinos por WhatsApp</a>
       </div>
       <p class="hero-note">Guardería náutica y servicios náuticos.<br>Predio cerrado, vigilancia y cámaras.</p>
     </div>
@@ -616,10 +578,7 @@ ul{margin:0;padding:0;list-style:none}
         </li>
       </ul>
 
-      <div class="wa-block">
-        <img class="wa-logo" src="assets/logo.png" alt="NautiMax">
-        <a class="btn" href="#contacto">Escribinos por WhatsApp</a>
-      </div>
+      <a class="btn" href="#contacto">Escribinos por WhatsApp</a>
     </div>
   </div>
 </section>
@@ -716,6 +675,11 @@ ul{margin:0;padding:0;list-style:none}
 
 <!-- ===== CONTACTO ===== -->
 <section class="contact on-dark" id="contacto">
+  <div class="wrap">
+    <div class="contact-brand">
+      <img src="assets/logo.png" alt="NautiMax">
+    </div>
+  </div>
   <div class="wrap contact-grid">
     <div>
       <h2 class="h-section">Guardá tu lancha con NautiMax.</h2>
@@ -724,12 +688,7 @@ ul{margin:0;padding:0;list-style:none}
       <dl class="contact-data">
         <div>
           <dt>WhatsApp · Teléfono</dt>
-          <dd>
-            <div class="wa-block">
-              <img class="wa-logo" src="assets/logo.png" alt="NautiMax">
-              <a href="#contacto" data-wa-link>11 3912-1206</a>
-            </div>
-          </dd>
+          <dd><a href="#contacto" data-wa-link>11 3912-1206</a></dd>
         </div>
         <div>
           <dt>Email</dt>
@@ -788,13 +747,10 @@ ul{margin:0;padding:0;list-style:none}
         <textarea id="consulta" name="consulta" placeholder="Contanos desde cuándo la querés guardar."></textarea>
       </div>
 
-      <div class="wa-block">
-        <img class="wa-logo" src="assets/logo.png" alt="NautiMax">
-        <button class="btn btn--go" type="submit">
-          <svg class="ico" aria-hidden="true"><use href="#ic-wa"/></svg>
-          Escribinos por WhatsApp
-        </button>
-      </div>
+      <button class="btn btn--go" type="submit">
+        <svg class="ico" aria-hidden="true"><use href="#ic-wa"/></svg>
+        Enviar por WhatsApp
+      </button>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       <p class="form-note">Se abre WhatsApp con el mensaje ya escrito. Lo revisás y lo enviás vos.</p>
     </form>
@@ -818,10 +774,7 @@ ul{margin:0;padding:0;list-style:none}
       <div>
         <h4>Contacto</h4>
         <a href="mailto:nautimaxargentina@gmail.com">nautimaxargentina@gmail.com</a>
-        <div class="wa-block">
-          <img class="wa-logo" src="assets/logo.png" alt="NautiMax">
-          <a href="#contacto" data-wa-link>WhatsApp</a>
-        </div>
+        <a href="#contacto" data-wa-link>WhatsApp</a>
         <p>11 3912-1206</p>
         <p>De 8 a 19 h<br>Martes descansamos</p>
       </div>
@@ -834,10 +787,7 @@ ul{margin:0;padding:0;list-style:none}
 </footer>
 
 <div class="mobile-cta">
-  <div class="wa-block">
-    <img class="wa-logo" src="assets/logo.png" alt="NautiMax">
-    <a class="btn btn--go" href="#contacto"><svg class="ico" aria-hidden="true"><use href="#ic-wa"/></svg>Escribinos por WhatsApp</a>
-  </div>
+  <a class="btn btn--go" href="#contacto"><svg class="ico" aria-hidden="true"><use href="#ic-wa"/></svg>Escribinos por WhatsApp</a>
 </div>
 
 <!-- datos para buscadores -->
