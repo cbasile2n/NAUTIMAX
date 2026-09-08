@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NautiMax | Gestión y Servicios Náuticos</title>
+
+  <meta
+    name="description"
+    content="NautiMax simplifica la gestión, coordinación y cuidado de tu embarcación."
+  />
+
+  <meta name="theme-color" content="#003f7d" />
+
+  <link rel="icon" href="assets/logo.png" />
+
+  <style>
+    :root {
+      --navy: #003d78;
+      --navy-dark: #002b59;
+      --blue: #0079bd;
+      --cyan: #08b8e8;
+      --white: #ffffff;
+      --off-white: #f7fbfd;
+      --text: #10283d;
+      --muted: #607386;
+      --border: rgba(10, 73, 116, 0.12);
+      --shadow: 0 18px 50px rgba(0, 53, 92, 0.10);
+      --radius: 22px;
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-light {
+      background: var(--off-white);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      color: var(--navy-dark);
+      margin-bottom: 18px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 680px;
+      font-size: 1.08rem;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+
+      border-bottom: 1px solid rgba(0, 61, 120, 0.08);
+    }
+
+    .navbar {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand img {
+      width: 185px;
+      height: 66px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #345067;
+      font-size: 0.94rem;
+      font-weight: 650;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-cta {
+      padding: 12px 20px;
+      border-radius: 999px;
+      color: white !important;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: 0 8px 25px rgba(0, 87, 145, 0.18);
+    }
+
+    .menu-button {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 1.8rem;
+      color: var(--navy);
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 130px;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      background:
+        radial-gradient(
+          circle at 85% 30%,
+          rgba(8, 184, 232, 0.18),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 10% 80%,
+          rgba(0, 100, 170, 0.10),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #f6fcff 60%,
+          #ffffff 100%
+        );
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      margin-bottom: 24px;
+      background: rgba(0, 137, 198, 0.08);
+      border: 1px solid rgba(0, 137, 198, 0.13);
+      border-radius: 999px;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 750;
+    }
+
+    .hero-badge span {
+      width: 7px;
+      height: 7px;
+      background: var(--cyan);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      color: var(--navy-dark);
+      font-size: clamp(3rem, 6.5vw, 5.6rem);
+      line-height: 0.97;
+      letter-spacing: -0.06em;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 strong {
+      font-weight: 850;
+      background: linear-gradient(100deg, var(--navy), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      max-width: 620px;
+      font-size: 1.18rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 750;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: 0 12px 30px rgba(0, 81, 139, 0.22);
+    }
+
+    .button-secondary {
+      color: var(--navy);
+      background: white;
+      border: 1px solid rgba(0, 61, 120, 0.16);
+    }
+
+    .hero-logo-card {
+      width: 100%;
+      max-width: 560px;
+      padding: 42px;
+      border-radius: 32px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.98),
+        rgba(242,251,255,0.95)
+      );
+      border: 1px solid rgba(0, 111, 170, 0.10);
+      box-shadow: 0 35px 90px rgba(0, 68, 110, 0.14);
+    }
+
+    .hero-mini {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .hero-mini div {
+      padding: 13px 8px;
+      text-align: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .services-header {
+      margin-bottom: 50px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 34px;
+      min-height: 280px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 17px;
+      background: linear-gradient(
+        145deg,
+        rgba(0, 80, 145, 0.09),
+        rgba(0, 192, 235, 0.10)
+      );
+      font-size: 1.55rem;
+    }
+
+    .service-card h3 {
+      color: var(--navy-dark);
+      font-size: 1.25rem;
+      margin-bottom: 13px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      min-height: 500px;
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #003e76, #006da5 52%, #08b8e8);
+      box-shadow: var(--shadow);
+    }
+
+    .about-logo {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+    }
+
+    .about-logo img {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .check-list {
+      margin-top: 28px;
+      display: grid;
+      gap: 15px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .check {
+      flex: 0 0 25px;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(0, 178, 225, 0.12);
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .contact-methods {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-method {
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .contact-method strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.88rem;
+    }
+
+    .contact-method span {
+      color: var(--muted);
+      font-size: 0.87rem;
+    }
+
+    .contact-form {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--navy-dark);
+      font-size: 0.82rem;
+      font-weight: 750;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(0, 64, 110, 0.14);
+      border-radius: 12px;
+      padding: 13px 14px;
+      color: var(--text);
+      background: #fbfdfe;
+      outline: none;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #00284f;
+      color: white;
+      padding: 65px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr 0.6fr;
+      gap: 60px;
+      padding-bottom: 45px;
+    }
+
+    .footer-logo {
+      width: 180px;
+      background: white;
+      padding: 8px 13px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-about {
+      max-width: 420px;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.9rem;
+    }
+
+    .footer-column h4 {
+      font-size: 0.88rem;
+      margin-bottom: 17px;
+    }
+
+    .footer-column a {
+      display: block;
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.88rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding-top: 25px;
+      color: rgba(255,255,255,0.48);
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        position: absolute;
+        top: 82px;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 10px 5%;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .section {
+        padding: 75px 0;
+      }
+
+      .brand img {
+        width: 150px;
+      }
+
+      .services-grid,
+      .form-row,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-mini {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        padding: 25px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+
+      <a href="#inicio" class="brand">
+        <img src="assets/logo.png" alt="NautiMax" />
+      </a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Abrir menú"
+      >
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#nosotros">NautiMax</a></li>
+        <li><a href="#contacto" class="nav-cta">Contactanos</a></li>
+      </ul>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="hero-badge">
+            <span></span>
+            Gestión náutica simplificada
+          </div>
+
+          <h1>
+            Disfrutá tu barco.<br />
+            <strong>Nosotros nos ocupamos.</strong>
+          </h1>
+
+          <p class="hero-text">
+            NautiMax centraliza la gestión, coordinación y seguimiento
+            de tu embarcación para que tengas más tiempo para disfrutarla
+            y menos cosas de las que ocuparte.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a href="#contacto" class="button button-primary">
+              Consultar →
+            </a>
+
+            <a href="#servicios" class="button button-secondary">
+              Ver servicios
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-logo-card">
+
+          <img
+            src="assets/logo.png"
+            alt="Logo NautiMax"
+          />
+
+          <div class="hero-mini">
+            <div>Gestión</div>
+            <div>Coordinación</div>
+            <div>Seguimiento</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="section section-light" id="servicios">
+
+      <div class="container">
+
+        <div class="services-header">
+
+          <span class="eyebrow">Servicios</span>
+
+          <h2 class="section-title">
+            Todo lo que tu embarcación necesita, más simple.
+          </h2>
+
+          <p class="section-description">
+            Centralizamos las tareas que requieren coordinación,
+            seguimiento y organización para que vos tengas menos
+            preocupaciones.
+          </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+          <article class="service-card">
+            <div class="service-icon">⚓</div>
+            <h3>Gestión integral</h3>
+            <p>
+              Organización y seguimiento general de las necesidades
+              de tu embarcación.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🔧</div>
+            <h3>Mantenimiento</h3>
+            <p>
+              Coordinación y seguimiento de tareas de mantenimiento.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">📋</div>
+            <h3>Administración</h3>
+            <p>
+              Información, gastos y documentación organizados de
+              una manera más clara.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🤝</div>
+            <h3>Coordinación de proveedores</h3>
+            <p>
+              Menos tiempo buscando, llamando y haciendo seguimiento.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Comunicación directa</h3>
+            <p>
+              Un canal simple para consultar y seguir las tareas de
+              tu embarcación.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🌊</div>
+            <h3>Más tiempo para navegar</h3>
+            <p>
+              Menos gestión para vos. Más tiempo para disfrutar.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="section" id="nosotros">
+
+      <div class="container about-grid">
+
+        <div class="about-visual">
+
+          <div class="about-logo">
+            <img
+              src="assets/logo.png"
+              alt="NautiMax"
+            />
+          </div>
+
+        </div>
+
+
+        <div class="about-copy">
+
+          <span class="eyebrow">NautiMax</span>
+
+          <h2 class="section-title">
+            La náutica debería sentirse simple.
+          </h2>
+
+          <p>
+            Tener una embarcación es para disfrutarla.
+            Pero detrás de cada salida existe mantenimiento,
+            coordinación y administración.
+          </p>
+
+          <p>
+            NautiMax nace para reducir esa complejidad y centralizar
+            la gestión en un solo lugar.
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              <span>Un único punto de contacto.</span>
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              <span>Mayor organización y seguimiento.</span>
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              <span>Menos tiempo dedicado a coordinar.</span>
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              <span>Más tiempo para disfrutar tu embarcación.</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="section section-light" id="contacto">
+
+      <div class="container contact-grid">
+
+        <div class="contact-info">
+
+          <span class="eyebrow">Contacto</span>
+
+          <h2 class="section-title">
+            Contanos qué necesitás.
+          </h2>
+
+          <p>
+            Completá tus datos y tu consulta. Al enviar,
+            se abrirá WhatsApp para que puedas continuar
+            la conversación directamente.
+          </p>
+
+
+          <div class="contact-methods">
+
+            <a
+              class="contact-method"
+              href="https://wa.me/5491100000000"
+              target="_blank"
+              rel="noopener"
+            >
+              <div>💬</div>
+
+              <div>
+                <strong>WhatsApp</strong>
+                <span>Escribinos directamente</span>
+              </div>
+            </a>
+
+
+            <a
+              class="contact-method"
+              href="mailto:contacto@nautimax.com"
+            >
+              <div>✉️</div>
+
+              <div>
+                <strong>Email</strong>
+                <span>contacto@nautimax.com</span>
+              </div>
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="contact-form">
+
+          <form id="contactForm">
+
+            <div class="form-row">
+
+              <div class="field">
+
+                <label for="name">Nombre</label>
+
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Tu nombre"
+                  required
+                />
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="boat">Embarcación</label>
+
+                <input
+                  id="boat"
+                  type="text"
+                  placeholder="Tipo / modelo"
+                />
+
+              </div>
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="phone">Teléfono</label>
+
+              <input
+                id="phone"
+                type="tel"
+                placeholder="+54..."
+              />
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="message">
+                Consulta
+              </label>
+
+              <textarea
+                id="message"
+                placeholder="Contanos qué necesitás..."
+                required
+              ></textarea>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="button button-primary"
+              style="border:0; cursor:pointer;"
+            >
+              Continuar por WhatsApp →
+            </button>
+
+            <p class="form-note">
+              Se abrirá WhatsApp con los datos que completaste.
+            </p>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <img
+            src="assets/logo.png"
+            alt="NautiMax"
+            class="footer-logo"
+          />
+
+          <p class="footer-about">
+            Gestión y soluciones náuticas para simplificar
+            el cuidado de tu embarcación.
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>Navegación</h4>
+
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#nosotros">NautiMax</a>
+          <a href="#contacto">Contacto</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>Contacto</h4>
+
+          <a
+            href="https://wa.me/5491100000000"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp
+          </a>
+
+          <a href="mailto:contacto@nautimax.com">
+            Email
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="year"></span> NautiMax.
+        </span>
+
+        <span>
+          Gestión y servicios náuticos
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menuButton.addEventListener("click", () => {
+
+      navLinks.classList.toggle("active");
+
+    });
+
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          navLinks.classList.remove("active");
+
+        });
+
+      });
+
+
+    const WHATSAPP_NUMBER =
+      "5491100000000";
+
+
+    document
+      .getElementById("contactForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+          document.getElementById("name").value.trim();
+
+        const boat =
+          document.getElementById("boat").value.trim();
+
+        const phone =
+          document.getElementById("phone").value.trim();
+
+        const message =
+          document.getElementById("message").value.trim();
+
+
+        let text = "";
+
+        if (name) {
+          text += `Nombre: ${name}\n`;
+        }
+
+        if (boat) {
+          text += `Embarcación: ${boat}\n`;
+        }
+
+        if (phone) {
+          text += `Teléfono: ${phone}\n`;
+        }
+
+        text += `\nConsulta:\n${message}`;
+
+
+        const whatsappURL =
+          `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+
+        window.open(
+          whatsappURL,
+          "_blank"
+        );
+
+      });
+
+  </script>
+
+</body>
+</html>
