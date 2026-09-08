@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NautiMax — Guardá tu lancha. Salí a navegar tranquilo.</title>
+<title>NautiMax — Guardería náutica para lanchas</title>
 
-<meta name="description" content="Guardería náutica para lanchas. Guardá tu lancha, avisá cuándo salís y encontrala lista para operar. Servicios náuticos adicionales cuando los necesites.">
+<meta name="description" content="Guardería náutica para lanchas de hasta 24 pies. Dejás tu embarcación, nos avisás el día que salís y la encontrás lista en el muelle.">
 <link rel="canonical" href="https://www.nautimax.com/">
 <meta name="theme-color" content="#0E1F1B">
 
@@ -15,8 +15,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
 <meta property="og:site_name" content="NautiMax">
-<meta property="og:title" content="NautiMax — Guardá tu lancha. Salí a navegar tranquilo.">
-<meta property="og:description" content="Guardá tu lancha, avisá cuándo salís y encontrala lista para operar.">
+<meta property="og:title" content="NautiMax — Guardería náutica para lanchas">
+<meta property="og:description" content="Dejás tu lancha, nos avisás el día que salís y la encontrás lista en el muelle.">
 <meta property="og:url" content="https://www.nautimax.com/">
 <meta property="og:image" content="https://www.nautimax.com/assets/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -180,7 +180,7 @@ ul{margin:0;padding:0;list-style:none}
    FICHA TÉCNICA
    ============================================================ */
 .specs{background:var(--ink);color:var(--paper);padding-bottom:clamp(46px,6vw,72px)}
-.specs-list{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-dark)}
+.specs-list{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
 .specs-list div{padding:26px 26px 4px 0;border-right:1px solid var(--line-dark)}
 .specs-list div:last-child{border-right:none}
 .specs-list b{
@@ -264,8 +264,6 @@ ul{margin:0;padding:0;list-style:none}
    CONTACTO
    ============================================================ */
 .contact{background:var(--ink);color:var(--paper);padding-block:var(--pad-y)}
-.contact-brand{margin-bottom:28px}
-.contact-brand img{width:180px;max-height:58px;object-fit:contain;object-position:left center;filter:brightness(0) invert(1)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(36px,5vw,80px)}
 .contact h2{color:var(--paper)}
 .contact .lede{color:var(--muted-dark)}
@@ -299,7 +297,7 @@ ul{margin:0;padding:0;list-style:none}
    FOOTER + BARRA MÓVIL
    ============================================================ */
 .site-footer{background:var(--ink-soft);color:var(--muted-dark);padding-block:52px 40px}
-.footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr;gap:40px}
+.footer-grid{display:grid;grid-template-columns:1.6fr .7fr .7fr;gap:40px}
 .footer-grid img{width:150px;filter:brightness(0) invert(1);opacity:.92;margin-bottom:16px}
 .footer-grid h4{color:var(--paper);font-size:.92rem;font-family:var(--sans);font-weight:600;letter-spacing:0;margin-bottom:12px}
 .footer-grid a,.footer-grid p{display:block;font-size:.93rem;margin:8px 0}
@@ -403,12 +401,13 @@ ul{margin:0;padding:0;list-style:none}
 
     <nav class="nav-links" aria-label="Principal">
       <a href="#guarderia">Guardería</a>
+      <a href="#como-funciona">Cómo funciona</a>
       <a href="#servicios">Servicios</a>
       <a href="#instalaciones">Instalaciones</a>
       <a href="#preguntas">Preguntas</a>
     </nav>
 
-    <a class="btn btn--go header-cta" href="#contacto">Escribinos por WhatsApp</a>
+    <a class="btn btn--go header-cta" href="#contacto">Escribinos</a>
 
     <button class="burger" id="burger" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menú">
       <span></span>
@@ -417,10 +416,11 @@ ul{margin:0;padding:0;list-style:none}
 
   <nav class="wrap mobile-nav" id="mobile-nav" aria-label="Principal móvil">
     <a href="#guarderia">Guardería</a>
+    <a href="#como-funciona">Cómo funciona</a>
     <a href="#servicios">Servicios</a>
     <a href="#instalaciones">Instalaciones</a>
     <a href="#preguntas">Preguntas</a>
-    <a class="btn btn--go" href="#contacto">Escribinos por WhatsApp</a>
+    <a class="btn btn--go" href="#contacto">Escribinos</a>
   </nav>
 </header>
 
@@ -430,12 +430,13 @@ ul{margin:0;padding:0;list-style:none}
 <section class="hero on-dark" id="inicio">
   <div class="wrap hero-grid">
     <div>
-      <h1>Guardá tu lancha.<br>Salí a navegar tranquilo.</h1>
-      <p>Dejás tu lancha con nosotros, avisás cuándo querés salir y te la tenemos lista para operar. Simple, segura y sin vueltas.</p>
+      <h1>Tu lancha, en el agua cuando llegás.</h1>
+      <p>Guardería náutica para lanchas de hasta 24 pies. La dejás con nosotros, nos avisás el día que salís y la encontrás lista en el muelle.</p>
       <div class="hero-actions">
         <a class="btn btn--go" href="#contacto"><svg class="ico" aria-hidden="true"><use href="#ic-wa"/></svg>Escribinos por WhatsApp</a>
+        <a class="btn btn--ghost" href="#como-funciona">Cómo funciona</a>
       </div>
-      <p class="hero-note">Guardería náutica y servicios náuticos.<br>Predio cerrado, vigilancia y cámaras.</p>
+      <p class="hero-note">Respondemos todos los días de 8 a 19 h.</p>
     </div>
 
     <!-- Ilustración: la lancha sale del sector de guarda al agua -->
@@ -502,9 +503,36 @@ ul{margin:0;padding:0;list-style:none}
   <div class="wrap">
     <div class="specs-list">
       <div><b>24 pies</b><span>Eslora máxima que recibimos.</span></div>
-      <div><b>5 toneladas</b><span>Peso máximo de operación con pórtico.</span></div>
-      <div><b>Bajo techo</b><span>Cada lancha en su cama náutica.</span></div>
+      <div><b>5 toneladas</b><span>Peso máximo de operación con grúa.</span></div>
+      <div><b>24 horas</b><span>Predio cerrado, vigilancia y cámaras.</span></div>
+      <div><b>Bajo techo</b><span>Cada lancha sobre su cuna, al resguardo.</span></div>
     </div>
+    <p class="specs-foot">Si tu embarcación está cerca del límite, escribinos y lo vemos caso por caso.</p>
+  </div>
+</section>
+
+<!-- ===== CÓMO FUNCIONA ===== -->
+<section class="band" id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h-section">Tres pasos y estás navegando.</h2>
+      <p class="lede">Sin trámites cada vez que querés salir. Un mensaje alcanza.</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step">
+        <h3>Dejás la lancha</h3>
+        <p>La recibimos, la ubicamos en su cuna y queda guardada hasta tu próxima salida.</p>
+      </li>
+      <li class="step">
+        <h3>Avisás el día</h3>
+        <p>Un mensaje por WhatsApp con la fecha y el horario. Con 24 horas de anticipación alcanza.</p>
+      </li>
+      <li class="step">
+        <h3>Llegás y salís</h3>
+        <p>La bajamos al agua y la dejamos amarrada en el muelle de abordaje. Subís y arrancás.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -513,72 +541,45 @@ ul{margin:0;padding:0;list-style:none}
   <div class="wrap split">
     <figure class="frame" style="margin:0">
       <img src="assets/guarderia-lanchas.jpg" alt="Lanchas guardadas sobre cunas en el predio de NautiMax" loading="lazy" decoding="async" data-fallback>
+      <figcaption>Sector de guarda de NautiMax.</figcaption>
     </figure>
 
     <div>
-      <h2 class="h-section">Un garage para tu lancha.</h2>
-      <p class="lede">Dejás tu embarcación en un espacio pensado para guardarla de forma segura y tenerla lista cuando la quieras usar.</p>
+      <h2 class="h-section">Una guardería, no un estacionamiento.</h2>
+      <p class="lede">La lancha no queda tirada en un playón. Entra, se apoya sobre su cuna y la mueve siempre personal del predio.</p>
 
       <ul class="feature-list">
         <li>
           <svg class="ico" aria-hidden="true"><use href="#ic-roof"/></svg>
           <div>
-            <h3>Guarda segura</h3>
-            <p>Tu lancha queda resguardada mientras no la usás.</p>
+            <h3>Guarda bajo techo</h3>
+            <p>Menos sol, menos lluvia y menos deterioro de tapizados, cubierta y motor.</p>
           </div>
         </li>
         <li>
           <svg class="ico" aria-hidden="true"><use href="#ic-crane"/></svg>
           <div>
-            <h3>Preparación para la salida</h3>
-            <p>Coordinamos el movimiento de la embarcación para que esté lista para operar.</p>
+            <h3>Botadura con puente grúa</h3>
+            <p>Bajada y retiro del agua a cargo del personal, con grúa y ascensores de costa.</p>
           </div>
         </li>
         <li>
           <svg class="ico" aria-hidden="true"><use href="#ic-dock"/></svg>
           <div>
-            <h3>Lista para operar</h3>
-            <p>La idea es que llegues y puedas salir a navegar sin ocuparte de la logística previa.</p>
+            <h3>Muelle de abordaje</h3>
+            <p>Cargás las cosas y subís con la lancha amarrada, sin apuro y sin maniobras.</p>
           </div>
         </li>
         <li>
           <svg class="ico" aria-hidden="true"><use href="#ic-shield"/></svg>
           <div>
             <h3>Predio controlado</h3>
-            <p>Predio cerrado, vigilancia y cámaras.</p>
-          </div>
-        </li>
-        <li>
-          <svg class="ico" aria-hidden="true"><use href="#ic-dock"/></svg>
-          <div>
-            <h3>Siempre buscamos una solución</h3>
-            <p>Buscamos la mejor manera de acomodarnos a tu necesidad.</p>
-          </div>
-        </li>
-        <li>
-          <svg class="ico" aria-hidden="true"><use href="#ic-shield"/></svg>
-          <div>
-            <h3>Navegantes</h3>
-            <p>Predio operado y controlado por náuticos.</p>
-          </div>
-        </li>
-        <li>
-          <svg class="ico" aria-hidden="true"><use href="#ic-car"/></svg>
-          <div>
-            <h3>Estacionamiento</h3>
-            <p>Contamos con un área resguardada para tu vehículo mientras salís a disfrutar.</p>
-          </div>
-        </li>
-        <li>
-          <svg class="ico" aria-hidden="true"><use href="#ic-roof"/></svg>
-          <div>
-            <h3>Tráiler</h3>
-            <p>Por un valor económico podés guardar tu tráiler en nuestro predio.</p>
+            <p>Acceso cerrado, vigilancia y cámaras las 24 horas.</p>
           </div>
         </li>
       </ul>
 
-      <a class="btn" href="#contacto">Escribinos por WhatsApp</a>
+      <a class="btn" href="#contacto">Consultar disponibilidad</a>
     </div>
   </div>
 </section>
@@ -587,8 +588,8 @@ ul{margin:0;padding:0;list-style:none}
 <section class="band" id="servicios">
   <div class="wrap">
     <div class="section-head">
-      <h2 class="h-section">Servicios náuticos, si los necesitás.</h2>
-      <p class="lede">La guardería es el servicio principal. Proveedores, papeles, seguros y demás gestiones se coordinan aparte, sólo cuando las necesitás.</p>
+      <h2 class="h-section">Lo demás, si lo necesitás.</h2>
+      <p class="lede">La guardería es el servicio. Estas gestiones se coordinan aparte, cuando te hacen falta.</p>
     </div>
 
     <ul class="service-list">
@@ -596,7 +597,7 @@ ul{margin:0;padding:0;list-style:none}
         <svg class="ico" aria-hidden="true"><use href="#ic-wrench"/></svg>
         <div>
           <h3>Taller y proveedores</h3>
-          <p>Si lo necesitás, te ayudamos a coordinar mecánicos y especialistas externos.</p>
+          <p>Te contactamos con mecánicos y especialistas y coordinamos el trabajo en el predio.</p>
         </div>
       </li>
       <li>
@@ -616,8 +617,8 @@ ul{margin:0;padding:0;list-style:none}
       <li>
         <svg class="ico" aria-hidden="true"><use href="#ic-drop"/></svg>
         <div>
-          <h3>Otros servicios náuticos</h3>
-          <p>Si necesitás un servicio adicional, podemos ayudarte a coordinarlo con proveedores externos.</p>
+          <h3>Limpieza y mantenimiento</h3>
+          <p>Lavado de casco, cubierta y tapizados entre salida y salida.</p>
         </div>
       </li>
     </ul>
@@ -628,13 +629,15 @@ ul{margin:0;padding:0;list-style:none}
 <section class="band band--hi" id="instalaciones">
   <div class="wrap">
     <div class="section-head">
-      <h2 class="h-section">Comodidades del predio.</h2>
+      <h2 class="h-section">Lo que vas a encontrar en el predio.</h2>
     </div>
     <ul class="amenities">
       <li><svg class="ico" aria-hidden="true"><use href="#ic-car"/></svg>Estacionamiento vigilado</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#ic-cup"/></svg>Cafetería y drugstore</li>
       <li><svg class="ico" aria-hidden="true"><use href="#ic-wifi"/></svg>Wi-Fi</li>
       <li><svg class="ico" aria-hidden="true"><use href="#ic-bolt"/></svg>Respaldo eléctrico</li>
-      <li><svg class="ico" aria-hidden="true"><use href="#ic-drop"/></svg>Vestuarios con duchas y sauna</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#ic-sun"/></svg>Deck y solárium</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#ic-wrench"/></svg>Mecánica especializada</li>
     </ul>
   </div>
 </section>
@@ -655,15 +658,15 @@ ul{margin:0;padding:0;list-style:none}
       </details>
       <details>
         <summary>¿Con cuánta anticipación tengo que avisar?</summary>
-        <p>Nos avisás por WhatsApp con el día y horario en que querés salir y coordinamos la preparación de tu lancha.</p>
+        <p>Con 24 horas alcanza para una salida común. Para fines de semana largos y feriados conviene avisar unos días antes.</p>
       </details>
       <details>
         <summary>¿Qué pasa si el día se pone feo y no salgo?</summary>
-        <p>Nos avisás y coordinamos una nueva salida.</p>
+        <p>Nos avisás y reprogramamos sin costo. Preferimos que no salgas antes que salir con mal tiempo.</p>
       </details>
       <details>
         <summary>¿La guarda incluye limpieza o mantenimiento?</summary>
-        <p>No. La guardería es para guardar la embarcación y tenerla lista para operar cuando avisás que vas a salir. Otros servicios se coordinan aparte si los necesitás.</p>
+        <p>No. La guarda cubre el espacio, el movimiento de la embarcación y la botadura. La limpieza y los trabajos de taller se cotizan aparte.</p>
       </details>
       <details>
         <summary>¿Necesito tener seguro?</summary>
@@ -675,28 +678,23 @@ ul{margin:0;padding:0;list-style:none}
 
 <!-- ===== CONTACTO ===== -->
 <section class="contact on-dark" id="contacto">
-  <div class="wrap">
-    <div class="contact-brand">
-      <img src="assets/logo.png" alt="NautiMax">
-    </div>
-  </div>
   <div class="wrap contact-grid">
     <div>
-      <h2 class="h-section">Guardá tu lancha con NautiMax.</h2>
-      <p class="lede">Si necesitás ayuda o tenés comentarios, por favor contactate con nosotros.</p>
+      <h2 class="h-section">Contanos qué lancha tenés.</h2>
+      <p class="lede">Con la marca, el modelo y la eslora te decimos si entra y qué disponibilidad hay. Sin formularios eternos.</p>
 
       <dl class="contact-data">
         <div>
-          <dt>WhatsApp · Teléfono</dt>
-          <dd><a href="#contacto" data-wa-link>11 3912-1206</a></dd>
+          <dt>WhatsApp</dt>
+          <dd><a href="#contacto" data-wa-link>Abrir conversación</a></dd>
         </div>
         <div>
           <dt>Email</dt>
-          <dd><a href="mailto:nautimaxargentina@gmail.com">nautimaxargentina@gmail.com</a></dd>
+          <dd><a href="mailto:contacto@nautimax.com">contacto@nautimax.com</a></dd>
         </div>
         <div>
           <dt>Horario</dt>
-          <dd>De 8 a 19 h<br><span style="font-size:.9rem;opacity:.72">Martes descansamos</span></dd>
+          <dd>Todos los días, de 8 a 19 h</dd>
         </div>
       </dl>
     </div>
@@ -763,20 +761,21 @@ ul{margin:0;padding:0;list-style:none}
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <p>Guardería náutica y servicios náuticos. Guardás tu lancha, avisás cuándo salís y te la tenemos lista para operar.</p>
+        <img src="assets/logo.png" alt="NautiMax" width="150" height="42">
+        <p>Guardería náutica para lanchas. Dejás la embarcación, avisás el día y la tenés lista en el muelle.</p>
       </div>
       <div>
         <h4>Secciones</h4>
         <a href="#guarderia">Guardería</a>
-          <a href="#servicios">Servicios</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#servicios">Servicios</a>
         <a href="#preguntas">Preguntas</a>
       </div>
       <div>
         <h4>Contacto</h4>
-        <a href="mailto:nautimaxargentina@gmail.com">nautimaxargentina@gmail.com</a>
+        <a href="mailto:contacto@nautimax.com">contacto@nautimax.com</a>
         <a href="#contacto" data-wa-link>WhatsApp</a>
-        <p>11 3912-1206</p>
-        <p>De 8 a 19 h<br>Martes descansamos</p>
+        <p>De 8 a 19 h</p>
       </div>
     </div>
     <div class="footer-base">
@@ -796,10 +795,10 @@ ul{margin:0;padding:0;list-style:none}
   "@context":"https://schema.org",
   "@type":"LocalBusiness",
   "name":"NautiMax",
-  "description":"Guardería náutica para lanchas y coordinación de servicios náuticos adicionales.",
+  "description":"Guardería náutica para lanchas de hasta 24 pies y coordinación de servicios náuticos.",
   "url":"https://www.nautimax.com/",
   "image":"https://www.nautimax.com/assets/logo.png",
-  "email":"nautimaxargentina@gmail.com",
+  "email":"contacto@nautimax.com",
   "address":{"@type":"PostalAddress","addressLocality":"Buenos Aires","addressCountry":"AR"},
   "openingHours":"Mo-Su 08:00-19:00"
 }
@@ -812,8 +811,8 @@ ul{margin:0;padding:0;list-style:none}
 const CONFIG = {
   // Número con código de país, sin +, sin espacios ni guiones.
   // Argentina: 549 + característica sin 0 + número sin 15. Ej.: "5491122334455"
-  whatsapp: "5491139121206",
-  email: "nautimaxargentina@gmail.com"
+  whatsapp: "",
+  email: "contacto@nautimax.com"
 };
 
 /* ---------- menú móvil ---------- */
